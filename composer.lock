@@ -1,0 +1,62 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "13752db1e886ebdfbfa6e756c0721785",
+    "packages": [
+        {
+            "name": "inteleon/inteleon-soap-client",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/inteleon/inteleon-soap-client.git",
+                "reference": "4d7d790a4f119116246e44295e224e0ef87d7477"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/inteleon/inteleon-soap-client/zipball/4d7d790a4f119116246e44295e224e0ef87d7477",
+                "reference": "4d7d790a4f119116246e44295e224e0ef87d7477",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Inteleon\\": "src/"
+                }
+            },
+            "authors": [
+                {
+                    "name": "Andreas Tylegard",
+                    "email": "andtyl@gmail.com"
+                }
+            ],
+            "description": "Inteleon Soap Client",
+            "support": {
+                "source": "https://github.com/inteleon/inteleon-soap-client/tree/master",
+                "issues": "https://github.com/inteleon/inteleon-soap-client/issues"
+            },
+            "time": "2014-08-07 14:49:37"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}
