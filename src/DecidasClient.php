@@ -39,6 +39,7 @@ class DecidasClient
 	 * @param integer $connect_timeout Connect timeout in milliseconds
 	 * @param integer $timeout Timeout in milliseconds
 	 * @param int $connect_attempts Number of connect attempts
+	 * @param boolean $verify_certificate Verify Decidas certificate
 	 * @param boolean $cache_wsdl Cache the WSDL
 	 */
 	public function __construct($username, $password, $connect_timeout = 30000, $timeout = 30000, $connect_attempts = 1, $verify_certificate = true, $cache_wsdl = true)
