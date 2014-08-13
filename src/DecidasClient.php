@@ -83,7 +83,7 @@ class DecidasClient
 
 		} catch (InteleonSoapClientException $e) {
 
-			throw new Exception('Connection error (' . $e->getMessage() . ')');			
+			throw new DecidasClientException('Connection error (' . $e->getMessage() . ')');			
 		}		
 
 		if ($response->PersonSearchResult->PersonsFound == 0) {
