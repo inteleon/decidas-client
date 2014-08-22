@@ -3,6 +3,7 @@ namespace Inteleon;
 
 use Inteleon\Exception\InteleonSoapClientException;
 use Inteleon\Exception\DecidasClientException;
+use SoapClient;
 use SoapFault;
 
 class DecidasClient
@@ -110,6 +111,16 @@ class DecidasClient
 		return $result;
 	}
 	
+	/**
+	 * Set your own Soap Client.
+	 *
+	 * @param SoapClient $soap_client
+	 */
+	public function setSoapClient(SoapClient $soap_client)
+	{
+		$this->soap_client = $soap_client;
+	}
+
 	/**
 	 * Get the Soap Client
 	 *
