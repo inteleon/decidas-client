@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ae7a4d0cb5ae1c81b05da29bf0d606df",
+    "hash": "f46c032b75f523bb875e1c71152b7845",
     "packages": [
         {
             "name": "inteleon/inteleon-soap-client",
@@ -40,7 +40,7 @@
             ],
             "description": "Inteleon Soap Client",
             "support": {
-                "source": "https://github.com/Inteleon/inteleon-soap-client/tree/master",
+                "source": "https://github.com/Inteleon/inteleon-soap-client/tree/v1.0.1",
                 "issues": "https://github.com/Inteleon/inteleon-soap-client/issues"
             },
             "time": "2014-08-13 10:47:49"
