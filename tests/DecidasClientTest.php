@@ -23,11 +23,11 @@ class DecidasClientTest extends PHPUnit_Framework_TestCase
         //Dummy response
         $dummy_decidas_response = unserialize('O:8:"stdClass":1:{s:18:"PersonSearchResult";O:8:"stdClass":3:{s:9:"Reference";s:0:"";s:12:"PersonsFound";i:1;s:7:"Persons";O:8:"stdClass":1:{s:6:"Person";O:8:"stdClass":15:{s:15:"ForbiddenPerson";b:0;s:16:"PersonIdentified";b:1;s:8:"PersonNr";s:12:"191111111111";s:8:"LastName";s:14:"Testperson Ett";s:9:"FirstName";s:12:"Decidas Info";s:9:"GivenName";s:7:"Decidas";s:9:"AddressCo";s:0:"";s:9:"AddressFo";s:0:"";s:13:"AddressStreet";s:12:"Testvägen 1";s:10:"AddressZip";s:5:"11111";s:11:"AddressCity";s:8:"Teststad";s:11:"CreditLimit";s:2:"-1";s:11:"CreditScore";s:2:"-1";s:13:"CreditGranted";b:0;s:12:"StatusString";s:5:"Aktiv";}}}}');
         $soap_client_mock = $this->createSoapClientMock($dummy_decidas_response);
-        
+
         $decidas = new DecidasClient(null, null);
         $decidas->setSoapClient($soap_client_mock);
         $result = $decidas->personSearch(null, null);
-        
+
         $this->assertArrayHasKey('PersonNr', $result);
         $this->assertArrayHasKey('LastName', $result);
         $this->assertArrayHasKey('FirstName', $result);
@@ -45,7 +45,7 @@ class DecidasClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['AddressFo'], '');
         $this->assertEquals($result['AddressStreet'], 'Testvägen 1');
         $this->assertEquals($result['AddressZip'], '11111');
-        $this->assertEquals($result['AddressCity'], 'Teststad');     
+        $this->assertEquals($result['AddressCity'], 'Teststad');
     }
 
     public function testPersonSearchNotFound()
@@ -58,6 +58,6 @@ class DecidasClientTest extends PHPUnit_Framework_TestCase
         $decidas->setSoapClient($soap_client_mock);
         $result = $decidas->personSearch(null, null);
 
-        $this->assertFalse($result);        
+        $this->assertFalse($result);
     }
 }

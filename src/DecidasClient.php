@@ -13,25 +13,25 @@ class DecidasClient
 
 	/** @var string Decidas Username */
 	protected $username;
-	
+
 	/** @var string Decidas password */
 	protected $password;
 
 	/** @var int The number of milliseconds to wait while trying to connect. */
 	protected $connect_timeout;
-	
+
 	/** @var int The maximum number of milliseconds to allow execution */
 	protected $timeout;
-	
+
 	/** @var int Number of connect attempts to be made if connection error occurs */
-	protected $connect_attempts;	
-	
+	protected $connect_attempts;
+
 	/** @var boolean Verify Decidas certificate */
 	protected $verify_certificate;
 
 	/** @var boolean Cache the WSDL */
 	protected $cache_wsdl;
-	
+
 	/**
 	 * Constructor
 	 *
@@ -63,39 +63,39 @@ class DecidasClient
 	 */
 	public function personSearch($PersonNr, $ConfigID)
 	{
-		try {	
-			$soap_client = $this->getSoapClient();		
+		try {
+			$soap_client = $this->getSoapClient();
 			$request = array(
 				'searchQuestion' => array(
 					'ConfigID' => $ConfigID,
 					'PersonNr' => $PersonNr
 				)
-			);			
+			);
 			$response = $soap_client->__soapCall('PersonSearch', array($request), array('location' => 'https://securews.decidas.com/DecidasService.asmx'));
 
-		} catch (SoapFault $sf){
+		} catch (SoapFault $sf) {
 
 			$error_string = '[' . $sf->faultcode . '] ' . $sf->faultstring;
-			
+
 			if (isset($sf->faultdetail) && $sf->faultdetail) {
 				$error_string .= ' (' . $sf->faultdetail . ')';
 			}
 
-			throw new DecidasClientException($error_string);	
+			throw new DecidasClientException($error_string);
 
 		} catch (InteleonSoapClientException $e) {
 
-			throw new DecidasClientException('Connection error (' . $e->getMessage() . ')');			
-		}		
+			throw new DecidasClientException('Connection error (' . $e->getMessage() . ')');
+		}
 
 		if ($response->PersonSearchResult->PersonsFound == 0) {
 			return false;
 		}
-		
+
 		if ($response->PersonSearchResult->PersonsFound > 1) {
 			throw new DecidasClientException('Multiple persons found');
 		}
-		
+
 		$result = array(
 			'PersonNr' => $response->PersonSearchResult->Persons->Person->PersonNr,
 			'LastName' => $response->PersonSearchResult->Persons->Person->LastName,
@@ -110,7 +110,7 @@ class DecidasClient
 
 		return $result;
 	}
-	
+
 	/**
 	 * Set your own Soap Client.
 	 *
@@ -129,10 +129,10 @@ class DecidasClient
 	protected function getSoapClient()
 	{
 		//Already instantiated
-		if (isset($this->soap_client)) {
-			return $this->soap_client;		
+        if (isset($this->soap_client)) {
+			return $this->soap_client;
 		}
-		
+
 		try {
 			$soap_client = new InteleonSoapClient('https://securews.decidas.com/DecidasService.asmx?WSDL', array(
 				'authentication' => SOAP_AUTHENTICATION_BASIC,
@@ -146,22 +146,22 @@ class DecidasClient
 			$soap_client->setConnectTimeout($this->connect_timeout);
 			$soap_client->setConnectAttempts($this->connect_attempts);
 			$soap_client->setVerifyCertificate($this->verify_certificate);
-			
-		} catch (SoapFault $sf){
+
+		} catch (SoapFault $sf) {
 
 			$error_string = '[' . $sf->faultcode . '] ' . $sf->faultstring;
-			
+
 			if (isset($sf->faultdetail) && $sf->faultdetail) {
 				$error_string .= ' (' . $sf->faultdetail . ')';
 			}
 
-			throw new DecidasClientException($error_string);	
+			throw new DecidasClientException($error_string);
 
 		} catch (InteleonSoapClientException $e) {
 
-			throw new Exception('Connection error (' . $e->getMessage() . ')');			
+			throw new Exception('Connection error (' . $e->getMessage() . ')');
 		}
-		
-		return $this->soap_client = $soap_client;			
-	}		
+
+		return $this->soap_client = $soap_client;
+	}
 }

@@ -5,5 +5,5 @@ use Exception;
 
 class DecidasClientException extends Exception
 {
-    
+
 }
