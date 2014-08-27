@@ -57,18 +57,18 @@ class DecidasClient
 	/**
 	 * Make a request to PersonSearch
 	 *
-	 * @param string $PersonNr Swedish id-number
-	 * @param string $ConfigID Defines the product the questions uses.
+	 * @param string $personnr Swedish id-number
+	 * @param string $configid Defines the product the questions uses.
 	 * @return false|array False if no hit or array with person information
 	 */
-	public function personSearch($PersonNr, $ConfigID)
+	public function personSearch($personnr, $configid)
 	{
 		try {
 			$soap_client = $this->getSoapClient();
 			$request = array(
 				'searchQuestion' => array(
-					'ConfigID' => $ConfigID,
-					'PersonNr' => $PersonNr
+					'ConfigID' => $configid,
+					'PersonNr' => $personnr
 				)
 			);
 			$response = $soap_client->__soapCall('PersonSearch', array($request), array('location' => 'https://securews.decidas.com/DecidasService.asmx'));
