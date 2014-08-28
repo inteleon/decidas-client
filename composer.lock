@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f46c032b75f523bb875e1c71152b7845",
+    "hash": "532fabea0a9683e90c830040ce5a1f09",
     "packages": [
         {
             "name": "inteleon/inteleon-soap-client",
