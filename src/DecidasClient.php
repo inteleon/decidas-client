@@ -112,7 +112,8 @@ class DecidasClient
 	}
 
 	/**
-	 * Set your own Soap Client.
+	 * Set Soap Client. If you set a SoapClient then the options passed in the
+	 * constructor will be ignored.
 	 *
 	 * @param SoapClient $soap_client
 	 */
