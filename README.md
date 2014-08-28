@@ -38,7 +38,7 @@ $timeout = 5000; //Timeout in ms
 $connect_attempts = 1; //Reconnect attempts if connection is failed
 $verify_certificate = true; //Verify the SSL certificate
 $cache_wsdl = true; //Cache the WSDL file
-$decidas = new Inteleon\DecidasClient($username, $password);
+$decidas = new Inteleon\DecidasClient($username, $password, $connect_timeout, $timeout, $connect_attempts, $verify_certificate, $cache_wsdl);
 
 //Person search
 $confignr = ''; //Decidas Config number/id
