@@ -1,12 +1,13 @@
 <?php
-namespace Inteleon;
+namespace Inteleon\Decidas;
 
-use Inteleon\Exception\InteleonSoapClientException;
-use Inteleon\Exception\DecidasClientException;
 use SoapClient;
 use SoapFault;
+use Inteleon\Decidas\Exception\ClientException;
+use Inteleon\Soap\Client as InteleonSoapClient;
+use Inteleon\Soap\Exception\ClientException as InteleonSoapClientException;
 
-class DecidasClient
+class Client
 {
 	/** @var SoapClient */
 	protected $soap_client;
@@ -43,8 +44,15 @@ class DecidasClient
 	 * @param boolean $verify_certificate Verify Decidas certificate
 	 * @param boolean $cache_wsdl Cache the WSDL
 	 */
-	public function __construct($username, $password, $connect_timeout = 30000, $timeout = 30000, $connect_attempts = 1, $verify_certificate = true, $cache_wsdl = true)
-	{
+	public function __construct(
+		$username,
+		$password,
+		$connect_timeout = 30000,
+		$timeout = 30000,
+		$connect_attempts = 1,
+		$verify_certificate = true,
+		$cache_wsdl = true
+	) {
 		$this->username = $username;
 		$this->password = $password;
 		$this->connect_timeout = $connect_timeout;
@@ -81,11 +89,11 @@ class DecidasClient
 				$error_string .= ' (' . $sf->faultdetail . ')';
 			}
 
-			throw new DecidasClientException($error_string);
+			throw new ClientException($error_string);
 
 		} catch (InteleonSoapClientException $e) {
 
-			throw new DecidasClientException('Connection error (' . $e->getMessage() . ')');
+			throw new ClientException('Connection error (' . $e->getMessage() . ')');
 		}
 
 		if ($response->PersonSearchResult->PersonsFound == 0) {
@@ -93,7 +101,7 @@ class DecidasClient
 		}
 
 		if ($response->PersonSearchResult->PersonsFound > 1) {
-			throw new DecidasClientException('Multiple persons found');
+			throw new ClientException('Multiple persons found');
 		}
 
 		$result = array(
@@ -123,7 +131,7 @@ class DecidasClient
 	}
 
 	/**
-	 * Get the Soap Client
+	 * Get the Soap Client. Instantiate new one if not already set.
 	 *
 	 * @return SoapClient
 	 */
@@ -156,7 +164,7 @@ class DecidasClient
 				$error_string .= ' (' . $sf->faultdetail . ')';
 			}
 
-			throw new DecidasClientException($error_string);
+			throw new ClientException($error_string);
 
 		} catch (InteleonSoapClientException $e) {
 
