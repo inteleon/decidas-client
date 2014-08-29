@@ -168,7 +168,7 @@ class Client
 
 		} catch (InteleonSoapClientException $e) {
 
-			throw new Exception('Connection error (' . $e->getMessage() . ')');
+			throw new ClientException('Connection error (' . $e->getMessage() . ')');
 		}
 
 		return $this->soap_client = $soap_client;
