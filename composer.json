@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": ">=5.3.0",
-        "inteleon/inteleon-soap-client": "1.*"
+        "inteleon/soap-client": "1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.*"
@@ -18,12 +18,12 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/inteleon/inteleon-soap-client"
+            "url": "https://github.com/inteleon/soap-client"
         }
     ],
     "autoload": {
         "psr-4": {
-            "Inteleon\\": "src/"
+            "Inteleon\\Decidas\\": "src/"
         }
     }
 }
