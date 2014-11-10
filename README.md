@@ -2,16 +2,7 @@
 
 For making requests to Decidas webservice. You need an account at Decidas.
 
-# Installation (Composer)
-
-Add to your `composer.json`:
-
-```json
-"require": {
-    "inteleon/decidas-client": "*"
-}
-```
-Then run `composer install`.
+**NOTE: Depends on Inteleon/Soap-Client** - Please add manually to your project.
 
 ## Supported Decidas functions
 
