@@ -75,8 +75,8 @@ class Client
 			$soap_client = $this->getSoapClient();
 			$request = array(
 				'searchQuestion' => array(
-					'ConfigID' => $configid,
-					'PersonNr' => $personnr
+				'ConfigID' => $configid,
+				'PersonNr' => $personnr
 				)
 			);
 			$response = $soap_client->__soapCall('PersonSearch', array($request), array('location' => 'https://securews.decidas.com/DecidasService.asmx'));
@@ -150,6 +150,7 @@ class Client
 				'exceptions' => true,
 				'trace' => false,
 				'cache_wsdl' => $this->cache_wsdl,
+				'connect_timeout' => ($this->connect_timeout / 1000),
 			));
 			$soap_client->setTimeout($this->timeout);
 			$soap_client->setConnectTimeout($this->connect_timeout);
