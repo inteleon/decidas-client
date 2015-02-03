@@ -2,6 +2,8 @@
 
 For making requests to Decidas webservice. This package is currently build only for looking up person data by a personnummer. You need an account for Decidas and a product configured for this (ConfigID).
 
+You should read the manual for the webservice to have a basic understanding of how it works.
+
 ## Person data by personnummer
 
 Get person data for a swedish personnummer.
