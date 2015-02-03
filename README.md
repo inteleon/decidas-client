@@ -1,16 +1,10 @@
 # Decidas Client
 
-For making requests to Decidas webservice. You need an account at Decidas.
+For making requests to Decidas webservice. This package is currently build only for looking up person data by a personnummer. You need an account for Decidas and a product configured for this (ConfigID).
 
-**NOTE: Depends on Inteleon/Soap-Client** - Please add manually to your project.
+## Person data by personnummer
 
-## Supported Decidas functions
-
-- PersonSearch (partly)
-
-## PersonSearch
-
-Currently this package only supports to search for one person by social security number (svenskt personnummer).
+Get person data for a swedish personnummer.
 
 ```php
 //Create client
@@ -25,7 +19,7 @@ $decidas = new Inteleon\Decidas\Client($username, $password, $connect_timeout, $
 
 //Person search
 $confignr = ''; //Decidas Config number/id
-$personnr = '';
+$personnr = ''; //Personnummer
 $person = $decidas->personSearch($personnr, $confignr);
 ```
 
