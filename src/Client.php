@@ -99,8 +99,7 @@ class Client
         if ($response->PersonSearchResult->PersonsFound > 1) {
             throw new ClientException('Multiple persons found');
         }
-
-        $result = array(
+        return [
             'PersonNr' => $response->PersonSearchResult->Persons->Person->PersonNr,
             'LastName' => $response->PersonSearchResult->Persons->Person->LastName,
             'FirstName' => $response->PersonSearchResult->Persons->Person->FirstName,
@@ -109,10 +108,9 @@ class Client
             'AddressFo' => $response->PersonSearchResult->Persons->Person->AddressFo,
             'AddressStreet' => $response->PersonSearchResult->Persons->Person->AddressStreet,
             'AddressZip' => $response->PersonSearchResult->Persons->Person->AddressZip,
-            'AddressCity' => $response->PersonSearchResult->Persons->Person->AddressCity
-        );
-
-        return $result;
+            'AddressCity' => $response->PersonSearchResult->Persons->Person->AddressCity,
+            'StatusString' => $response->PersonSearchResult->Persons->Person->StatusString,
+        ];
     }
 
     /**
