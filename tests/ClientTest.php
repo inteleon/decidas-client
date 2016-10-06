@@ -37,6 +37,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('AddressStreet', $result);
         $this->assertArrayHasKey('AddressZip', $result);
         $this->assertArrayHasKey('AddressCity', $result);
+        $this->assertArrayHasKey('StatusString', $result);
         $this->assertEquals($result['PersonNr'], '191111111111');
         $this->assertEquals($result['LastName'], 'Testperson Ett');
         $this->assertEquals($result['FirstName'], 'Decidas Info');
@@ -46,6 +47,7 @@ class ClientTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($result['AddressStreet'], 'Testvägen 1');
         $this->assertEquals($result['AddressZip'], '11111');
         $this->assertEquals($result['AddressCity'], 'Teststad');
+        $this->assertEquals($result['StatusString'], 'Aktiv');
     }
 
     public function testPersonSearchNotFound()
