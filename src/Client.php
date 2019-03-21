@@ -139,6 +139,12 @@ class Client
         try {
             $soap_client = new InteleonSoapClient('https://securews.decidas.com/DecidasService.asmx?WSDL', array(
                 'authentication' => SOAP_AUTHENTICATION_BASIC,
+                'soap_version' => SOAP_1_2,
+                'stream_context' => stream_context_create(array(
+                    'ssl' => array(
+                        'crypto_method' =>  STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT,
+                    )
+                )),
                 'login' => $this->username,
                 'password' => $this->password,
                 'exceptions' => true,
